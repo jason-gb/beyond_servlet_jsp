@@ -25,8 +25,8 @@
 		<li>표현식 태그</li>
 	</ol>
 	
-	<a href="http://localhost:8080/02_JSP/views/elements/">View Details</a>
-	<a href="http://localhost:8080/02_JSP/views/directive/">View Details</a>
+	<a href="<%= request.getContextPath() %>/views/elements/">View Details</a>
+	<a href="<%= request.getContextPath() %>/views/directive/">View Details</a>
 	
 	<h2>3. JSP 내장 객체</h2>
 	<p>
@@ -34,7 +34,9 @@
 		즉, JSP 페이지 내부에서 개발자가 직접 선언하지 않아도 바로 사용이 가능한 객체이다.
 	</p>
 	
-	<a href="/02_JSP/views/object/">View Details</a>
+	userId : <%= session.getAttribute("userId") %><br>
+	
+	<a href="<%= request.getContextPath() %>/views/object/">View Details</a>
 
 
 
