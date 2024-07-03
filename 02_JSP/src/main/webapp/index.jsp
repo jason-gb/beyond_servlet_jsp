@@ -38,8 +38,21 @@
 	
 	<a href="<%= request.getContextPath() %>/views/object/">View Details</a>
 
-
-
+	<h2>4. 영역 객체</h2>
+	<p>
+		JSP에서 제공하는 내장 개개체들 중에 pageContext,request, session, application
+		객체는 해당 객체에 정의된 유요한 범위를 갖는다<br>
+		해당 객체들은 유요한 범위 안에서 필요한 데이터를 서로 공유할 수 있는데 이 공유되는 데이터를 속성(Attribute)라고 한다.
+	</p>
+	
+	<ol>
+		<li>Page 영역</li>
+		<li>Request 영역</li>
+		<li>Session 영역</li>
+		<li>Application 영역</li>
+	</ol>
+	
+	<a href="<%= request.getContextPath() %>/views/scope/">View Details</a>
 
 
 
