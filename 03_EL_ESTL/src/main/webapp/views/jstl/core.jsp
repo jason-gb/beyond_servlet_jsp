@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<c:set var="path" value="${ pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,22 +120,76 @@
     <h5>학생 목록 조회</h5>
     <table border="1">
         <tr>
+        	<th>인덱스</th>
+        	<th>순번</th>
+        	<th>현재 반복 순서</th>
             <th>이름</th>
             <th>나이</th>
             <th>수학 점수</th>
             <th>영어 점수</th>
+            <th>first</th>
+            <th>last</th>
         </tr>
-        <c:forEach var="student" items="${ students }">
-        	<tr>${ student.name }</tr>
-			<td>${ student.age }</td>
-			<td>${ student.math }</td>
-			<td>${ student.english }</td>
-			<td></td>
+        <c:forEach var="student" items="${ students }" varStatus="status">
+        	<tr>
+	        	<td>${ status.index }</td>
+	        	<td>${ status.count }</td>
+	        	<td>${ status.current }</td>
+	        	<td>${ student.name }</td>
+				<td>${ student.age }</td>
+				<td>${ student.math }</td>
+				<td>${ student.english }</td>
+				<td>${ status.first }</td>
+				<td>${ status.last }</td>
+			</tr>
         </c:forEach>
     </table>
+    
+    <h4>2) c:forTokens 태그</h4>
+	<p>
+		문자열에 포함된 구분자를 통해 토큰을 분리해 반복을 수행하는 태그이다.
+	</p>
+	<ul>
+		<c:forTokens var="color" items="${ colors }" delims=",">
+			<li style="color: ${ color }">${ color }</li>
+		</c:forTokens>
+	</ul>
 	
+	<ol>
+		<c:forTokens var="device" items="컴퓨터,노트북,에어컨/TV,냉장고.세탁기" delims=",/.">
+		 <li>${ device }</li>
+		</c:forTokens>
+	</ol>
 	
+	<h3>5. c:url 태그</h3>
 	
+	<p>
+		URL을 생성하고 스트링을 미리 설정하는 태그이다.
+	</p>
+	
+	<c:url var="url" value="/views/el/elParam.jsp">
+		<c:param name="pNAme" value="아이폰 16 Pro"/>
+		<c:param name="pCount" value="10"/>
+		<c:param name="option" value="space gray"/>
+		<c:param name="option" value="512GB"/>
+	</c:url>
+	<a href="${ url }">View Details</a>
+	<br>
+	
+	<h4>2-2) JSTL Formatting Library</h4>
+	<p>
+         날짜와 시간, 숫자 데이터의 출력 형식을 지정할 때 사용하는 액션 태그를 제공한다.
+    </p>
+
+
+    <a href="${ path }/views/jstl/formatting.jsp">View Details</a>
+    
+	<h4>2-3) JSTL Function Library</h4>
+	<p>
+         문자열 처리와 관련된 함수들을 EL 구문에서 사용할 수 있게 하는 라이브러리이다.
+    </p>
+    <a href="${ path }/views/jstl/function.jsp">View Details</a>
+
     
 </body>
 </html>

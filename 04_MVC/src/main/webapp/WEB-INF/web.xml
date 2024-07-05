@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--  
-  배포 서술자(DD, Deployment Descriptor)
-    - 배포 서술자는 웹 애플리케이션의 기본적인 설정을 위해 작성하는 파일이다.
--->
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
-  <display-name>01_Servlet</display-name>
+  <display-name>04_MVC</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
@@ -13,16 +9,4 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
-   <!-- 서블릿 동록 및 매핑(url-서블릿) -->
-  <servlet>
-  	<servlet-name>first</servlet-name>
-  	<servlet-class>com.beyond.servlet.FirstServlet</servlet-class>
-  </servlet>
-  
-  <!--  http://localhost:8080/01_Servlet/first.do  -->
- <servlet-mapping>
- 	<servlet-name>first</servlet-name>
- 	<url-pattern>/first.do</url-pattern>
- </servlet-mapping>
- 
 </web-app>
