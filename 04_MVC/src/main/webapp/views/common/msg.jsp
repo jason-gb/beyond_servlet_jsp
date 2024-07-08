@@ -13,8 +13,7 @@
 		alert("${ msg }");
 		
 		// 페이지 이동
-		location.replace("${ pageContext.request.contextPath}${ location}");
-		
+		location.replace("${ pageContext.request.contextPath }${ location }");
 	</script>
 </body>
 </html>

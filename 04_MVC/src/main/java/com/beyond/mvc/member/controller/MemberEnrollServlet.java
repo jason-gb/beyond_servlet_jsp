@@ -1,7 +1,6 @@
 package com.beyond.mvc.member.controller;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 import com.beyond.mvc.member.model.service.MemberServiceImpl;
 import com.beyond.mvc.member.model.vo.Member;
@@ -19,6 +18,8 @@ public class MemberEnrollServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+ 
+		// 회원 가입 페이지로 전환해주는 기능
 		request.getRequestDispatcher("/views/member/enroll.jsp").forward(request, response);
 	}
 
@@ -29,30 +30,27 @@ public class MemberEnrollServlet extends HttpServlet {
 		member.setId(request.getParameter("userId"));
 		member.setPassword(request.getParameter("userPwd"));
 		member.setName(request.getParameter("userName"));
-		member.setPhone(request.getParameter("userPhone"));
-		member.setEmail(request.getParameter("userEmail"));
-		member.setAddress(request.getParameter("userAddress"));
+		member.setPhone(request.getParameter("phone"));
+		member.setEmail(request.getParameter("email"));
+		member.setAddress(request.getParameter("address"));
 		
-		String hobby = request.getParameterValues("hobby") != null ? 
-				String.join(",",request.getParameterValues("hobby")) : null;
+		String hobby = request.getParameterValues("hobby") != null ?
+				String.join(",", request.getParameterValues("hobby")) : null;
 		
 		member.setHobby(hobby);
 		
 		int result = new MemberServiceImpl().save(member);
 		
-		if(result > 0) {
+		if (result > 0) {
+			// 회원 가입 완료
 			request.setAttribute("msg", "회원 가입 성공");
-			request.setAttribute("location","/");
+			request.setAttribute("location", "/");
 		} else {
+			// 회원 가입 실패
 			request.setAttribute("msg", "회원 가입 실패");
-			request.setAttribute("location","/member/enroll");
+			request.setAttribute("location", "/member/enroll");
 		}
 		
-		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);		
 	}
-	
-	
-	
-	
-
 }

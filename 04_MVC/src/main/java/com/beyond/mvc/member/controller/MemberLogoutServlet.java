@@ -23,10 +23,8 @@ public class MemberLogoutServlet extends HttpServlet {
 		
 		// 2. 세션을 삭제한다.
 		session.invalidate();
-	
+		
 		// 3. 삭제 후 메인 화면으로 리다이렉트
 		response.sendRedirect(request.getContextPath() + "/");
 	}
-	
-	
 }
